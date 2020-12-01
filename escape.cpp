@@ -70,24 +70,24 @@ public:
 class item
 {
 public:
-    void healthItem(int gethealth)
+    void healthItem(int *gethealth)
     {
-        gethealth += 3;
+        *gethealth += 3;
         cout << " Ã¼·Â ¾ÆÀÌÅÛ È¹µæ" << endl;
         Sleep(ONE_SECOND);
         cout << " ++Ã¼·Â 3 È¹µæ" << endl;
         Sleep(ONE_SECOND);
-        cout << " ++ÇöÀç Ã¼·Â: " << gethealth << endl;
+        cout << " ++ÇöÀç Ã¼·Â: " << *gethealth << endl;
     }
 
-    void mentalItem(int getmental)
+    void mentalItem(int *getmental)
     {
-        getmental += 2;
+        *getmental += 2;
         cout << " Á¤½Å·Â ¾ÆÀÌÅÛ È¹µæ" << endl;
         Sleep(ONE_SECOND);
         cout << " ++Á¤½Å·Â 2 È¹µæ" << endl;
         Sleep(ONE_SECOND);
-        cout << " ++ÇöÀç Á¤½Å·Â: " << getmental << endl;
+        cout << " ++ÇöÀç Á¤½Å·Â: " << *getmental << endl;
     }
 
     void goldItem()
@@ -334,12 +334,15 @@ void itemProb(int* playerhealth, int* playermental)
     item getitem;
     int randNum = getRandomNumber50p();
 
+    int *ht = playerhealth;
+    int *mt = playermental;
+
     if (randNum == 0)
     {
-        getitem.healthItem(*playerhealth);
+        getitem.healthItem(ht);
     }
     else if (randNum == 1)
     {
-        getitem.mentalItem(*playermental);
+        getitem.mentalItem(mt);
     }
 }
